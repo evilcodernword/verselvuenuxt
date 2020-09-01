@@ -4,36 +4,38 @@
       <div class="story-line">
         <div class="container">
           <div class="row">
-            <VueSlickCarousel
-              class="story col-12 col-sm-12 col-md-12 col-lg-6 mb-4"
-              style="max-height: auto;"
-              v-bind="settings"
-            >
-              <div v-for="story in stories" :key="story.id">
-                <div class="circle">
-                  <a
-                    v-on:click="callVideoSrc"
-                    class="storyButton"
-                    href="javascript:0"
-                    :data-src="story.src"
-                    @click="toggle"
-                  >
-                    <img :src="story.coverpic" draggable="false" alt="" />
-                  </a>
-                  <svg
-                    viewBox="0 0 100 100"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="enable-background:new -580 439 577.9 194;"
-                    xml:space="preserve"
-                  >
-                    <circle cx="50" cy="50" r="40" />
-                  </svg>
+            <client-only>
+              <VueSlickCarousel
+                class="story col-12 col-sm-12 col-md-12 col-lg-6 mb-4"
+                style="max-height: auto"
+                v-bind="settings"
+              >
+                <div v-for="story in stories" :key="story.id">
+                  <div class="circle">
+                    <a
+                      v-on:click="callVideoSrc"
+                      class="storyButton"
+                      href="javascript:0"
+                      :data-src="story.src"
+                      @click="toggle"
+                    >
+                      <img :src="story.coverpic" draggable="false" alt="" />
+                    </a>
+                    <svg
+                      viewBox="0 0 100 100"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="enable-background:new -580 439 577.9 194;"
+                      xml:space="preserve"
+                    >
+                      <circle cx="50" cy="50" r="40" />
+                    </svg>
+                  </div>
+                  <div class="col-12 text-center text-truncate text-light">
+                    {{ story.name }}
+                  </div>
                 </div>
-                <div class="col-12 text-center text-truncate text-light">
-                  {{ story.name }}
-                </div>
-              </div>
-            </VueSlickCarousel>
+              </VueSlickCarousel>
+            </client-only>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-4 reklam-top">
               <img
                 class="mh-100 mw-100"
@@ -320,7 +322,11 @@
           </div>
           <div class="col-xl-9 col-lg-8">
             <div class="row" id="app">
-              <div class="col-6 col-sm-4 col-md-4 col-xl-3 mb-4" v-for="(n, indx) in 23" :key="indx">
+              <div
+                class="col-6 col-sm-4 col-md-4 col-xl-3 mb-4"
+                v-for="(n, indx) in 23"
+                :key="indx"
+              >
                 <div class="card card-list">
                   <div class="card__cover">
                     <img
@@ -398,7 +404,6 @@
 
 <script>
 import VueSlickCarousel from "vue-slick-carousel";
-import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
@@ -440,7 +445,8 @@ export default {
             settings: {
               arrows: false,
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 2,
+              initialSlide: 2
             }
           }
         ]
@@ -488,7 +494,7 @@ export default {
             "https://th.bing.com/th/id/OIP.FAq6HY6_62GWDhj9RGhgwAHaHa?pid=Api&rs=1",
           src: "https://www.youtube.com/embed/ndl1W4ltcmg"
         }
-      ],
+      ]
     };
   },
   methods: {

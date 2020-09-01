@@ -30,6 +30,7 @@ export default {
   */
   css: [
     '~/assets/bootstrap.min.css',
+    'vue-slick-carousel/dist/vue-slick-carousel.css',
     '~/assets/main.css'
   ],
   /*
@@ -37,7 +38,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '@/plugins/vue-click-outside.js'
+   { src:'@/plugins/vue-click-outside.js'},
+   { src:'./plugins/vue-slick-carousel.js'}
   ],
   /*
   ** Auto import components
